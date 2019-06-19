@@ -25,10 +25,16 @@ node {
     }
 
     stage("Staging") {
-        sh "pid=\$(lsof -i:9090 -t); kill -TERM \$pid "
-            + "|| kill -KILL \$pid"
+        try {
+            sh "pid=\$(lsof -i:9090 -t); kill -TERM \$pid "
+                + "|| kill -KILL \$pid"
+        } catch {
+            withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
+                sh 'nohup mvn spring-boot:run -Dserver.port=9090 &'
+            }
+        }
         withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
             sh 'nohup mvn spring-boot:run -Dserver.port=9090 &'
-        }   
+        }
     }
 }
