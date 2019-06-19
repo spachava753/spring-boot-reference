@@ -4,7 +4,7 @@ node {
 
     stage("Compilation") {
         parallel 'Compilation': {
-            sh "./mvnw clean install -DskipTests"
+            sh "mvn clean install -DskipTests"
         }
     }
 
@@ -12,7 +12,7 @@ node {
         parallel 'Unit tests': {
             stage("Runing unit tests") {
                 try {
-                    sh "./mvnw test -Punit"
+                    sh "mvn test -Punit"
                 } catch(err) {
                     step([$class: 'JUnitResultArchiver', testResults: 
                         '**/target/surefire-reports/TEST-*UnitTest.xml'])
@@ -24,7 +24,7 @@ node {
         }, 'Integration tests': {
             stage("Runing integration tests") {
                 try {
-                    sh "./mvnw test -Pintegration"
+                    sh "mvn test -Pintegration"
                 } catch(err) {
                     step([$class: 'JUnitResultArchiver', testResults: 
                         '**/target/surefire-reports/TEST-'
@@ -42,7 +42,7 @@ node {
         sh "pid=\$(lsof -i:9090 -t); kill -TERM \$pid "
             + "|| kill -KILL \$pid"
         withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
-            sh 'nohup ./mvnw spring-boot:run -Dserver.port=9090 &'
+            sh 'nohup mvn spring-boot:run -Dserver.port=9090 &'
         }   
     }
 }
