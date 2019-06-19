@@ -1,4 +1,4 @@
-package hello;
+package net.thespblog.springbootref;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
@@ -34,8 +34,7 @@ public class HelloControllerIT {
 
     @Test
     public void getHello() throws Exception {
-        ResponseEntity<String> response = template.getForEntity(base.toString(),
-                String.class);
-        assertThat(response.getBody(), equalTo("Greetings from Spring Boot!"));
+        ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
+        assertThat(response.getBody(), equalTo("Greetings from Shashank Pachava!"));
     }
 }
