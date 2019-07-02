@@ -6,8 +6,12 @@ pipeline {
     }
     stages {
         stage("Compilation") {
-            parallel 'Compilation': {
-                sh "mvn clean install -DskipTests"
+            parallel {
+                stage('Compilation') {
+                    steps {
+                        sh "mvn clean install -DskipTests"
+                    }
+                }
             }
         }
         stage("Tests and Deployment") {
