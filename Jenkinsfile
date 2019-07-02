@@ -1,7 +1,10 @@
 node {
     stage 'Cloning the project'
     git 'https://github.com/spachava753/spring-boot-reference.git'
-
+    tools {
+        jdk 'jdk8'
+        maven 'maven3'
+    }
     stage("Compilation") {
         parallel 'Compilation': {
             sh "mvn clean install -DskipTests"
