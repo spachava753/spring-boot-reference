@@ -18,15 +18,7 @@ pipeline {
             parallel {
                 stage("Runing unit tests") {
                     steps {
-                        try {
-                            sh "mvn test"
-                        } catch(err) {
-                            step([$class: 'JUnitResultArchiver', testResults: 
-                                '**/target/surefire-reports/TEST-*Test.xml'])
-                            throw err
-                        }
-                        step([$class: 'JUnitResultArchiver', testResults: 
-                            '**/target/surefire-reports/TEST-*Test.xml'])
+                        sh "mvn test"
                     }
                 }
             }
