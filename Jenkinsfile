@@ -15,7 +15,7 @@ pipeline {
             }
         }
         stage("Tests and Deployment") {
-            parallel 'Unit tests': {
+            parallel {
                 stage("Runing unit tests") {
                     try {
                         sh "mvn test"
