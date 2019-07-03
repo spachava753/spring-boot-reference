@@ -5,11 +5,6 @@ pipeline {
         maven 'maven3'
     }
     stages {
-        stage("install") {
-            steps {
-                sh "mvn install"
-            }
-        }
         stage("Compilation") {
             parallel {
                 stage('Compilation') {
