@@ -19,6 +19,7 @@ pipeline {
                 stage("Runing unit tests") {
                     steps {
                         sh "mvn test"
+                        sh "mvn sonar:sonar -Dsonar.host.url=http://sonar:9000"
                     }
                 }
             }
