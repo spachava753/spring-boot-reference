@@ -8,7 +8,7 @@ phases:
       - apt-get install maven -y
   build:
     commands:
-      - mvn install war:war
+      - mvn install -DskipTests=true
 artifacts:
   files:
     - target/refapp.war
