@@ -2,4 +2,4 @@ version: 0.0
 os: linux
 files:
   - source: ./refapp.war
-    destination: /var/lib/tomcat/webapps
+    destination: /var/lib/tomcat9/webapps/
