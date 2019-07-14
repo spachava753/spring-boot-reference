@@ -1,14 +1,5 @@
 version: 0.0
 os: linux
 files:
-  - source: refapp.war
-    destination: /var/lib/tomcat/webapps/
-hooks:
-  BeforeInstall:
-    - location: scripts/stop.sh
-      timeout: 300
-      runas: root
-  AfterInstall:
-    - location: scripts/start.sh
-      timeout: 300
-      runas: root
+  - source: ./refapp.war
+    destination: /var/lib/tomcat/webapps
