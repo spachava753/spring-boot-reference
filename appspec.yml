@@ -3,3 +3,5 @@ os: linux
 files:
   - source: ./refapp.war
     destination: /var/lib/tomcat9/webapps/
+permissions:
+  user: root
