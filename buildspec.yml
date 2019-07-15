@@ -11,5 +11,7 @@ phases:
       - mvn install -DskipTests=true
 artifacts:
   files:
-    - /
-  discard-paths: no
+    - target/refapp.war
+    - appspec.yml
+    - scripts/*
+  discard-paths: yes
