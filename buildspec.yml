@@ -9,8 +9,8 @@ phases:
   build:
     commands:
       - mvn install -DskipTests=true
-# artifacts:
-#   files:
-#     - target/refapp.war
-#     - appspec.yml
-#   discard-paths: yes
+artifacts:
+  files:
+    - target/refapp.war
+#    - appspec.yml
+  discard-paths: yes
