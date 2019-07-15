@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: refapp.war
+  - source: target/refapp.war
     destination: /var/lib/tomcat/webapps
 hooks:
   BeforeInstall:
