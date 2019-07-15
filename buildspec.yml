@@ -12,5 +12,5 @@ phases:
 artifacts:
   files:
     - target/refapp.war
-#    - appspec.yml
+    - appspec.yml
   discard-paths: yes
